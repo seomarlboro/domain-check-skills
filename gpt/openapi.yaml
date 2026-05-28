@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Domain Check Skills API
+  description: Live domain availability + registrar pricing. Powered by DigMyName.
+  version: "0.1.0"
+servers:
+  - url: https://ifamsapmecefkyspmojb.supabase.co/functions/v1
+paths:
+  /check-domain:
+    post:
+      operationId: checkDomain
+      summary: Check live availability of a single domain
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [domain]
+              properties:
+                domain:
+                  type: string
+                  description: Full domain incl. TLD, e.g. 'myidea.com'
+      responses:
+        "200":
+          description: Availability result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [available, taken, uncertain]
+                  source: { type: string }
+                  registrarLinks:
+                    type: array
+                    items: { type: object }
+  /search-domains:
+    post:
+      operationId: searchDomains
+      summary: Check a base name across multiple TLDs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string, description: "Base name without TLD" }
+                tlds:
+                  type: array
+                  items: { type: string }
+                  description: "TLDs to check (default: com, io, ai, co, app, dev, net, org, xyz, tech, me, so)"
+      responses:
+        "200":
+          description: Per-TLD availability
+  /get-registrars:
+    post:
+      operationId: getRegistrars
+      summary: Compare registrar pricing for a TLD
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tld]
+              properties:
+                tld: { type: string, description: "TLD without dot, e.g. 'com'" }
+      responses:
+        "200":
+          description: Pricing across 7 registrars (1-year and 3-year totals)

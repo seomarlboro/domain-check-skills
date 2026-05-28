@@ -1,0 +1,59 @@
+{
+  "name": "domain-check-skills-mcp",
+  "version": "0.1.0",
+  "description": "MCP server to check domain availability from any LLM — Claude, Cursor, Windsurf, Continue. 7 registrars, 52 TLDs. Powered by DigMyName.",
+  "type": "module",
+  "bin": {
+    "domain-check-skills-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "domain",
+    "domain-check",
+    "domain-availability",
+    "domain-checker",
+    "domain-search",
+    "digmyname",
+    "llm-tools",
+    "ai-agent",
+    "claude",
+    "claude-desktop",
+    "chatgpt",
+    "cursor",
+    "windsurf",
+    "continue",
+    "anthropic"
+  ],
+  "author": "DigMyName <hello@digmyname.com> (https://digmyname.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Seomarlboro/domain-check-skills.git",
+    "directory": "mcp"
+  },
+  "homepage": "https://github.com/Seomarlboro/domain-check-skills#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
