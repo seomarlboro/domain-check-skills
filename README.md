@@ -89,7 +89,7 @@ Full per-client guides in [`/mcp/README.md`](./mcp/README.md).
 - [ ] Publish to npm as `domain-check-skills-mcp`
 - [ ] Python port for MCP server
 - [ ] Cloudflare Workers deployment template
-- [ ] German / Spanish / Russian translations
+- [ ] German / Spanish / Ukranian translations
 - [ ] More registrars (Hover, Gandi, Internet.bs)
 - [ ] WHOIS history lookups (recently expired domains)
 - [ ] Bulk CSV check via MCP resource
