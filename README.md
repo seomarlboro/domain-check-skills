@@ -4,7 +4,7 @@
 
 A free **MCP (Model Context Protocol) server** and **Claude Skill** for checking domain availability across 50+ TLDs, with cheapest-registrar pricing baked in.
 
-Powered by [digmyname.com](https://digmyname.com) — a multi-source verification engine (Domainr + RDAP + DNS + Porkbun) that **never reports uncertain results as "taken"**.
+Powered by [digmyname.com](https://digmyname.com) — a multi-source verification engine (RDAP + DNS-over-HTTPS + Fastly Domain Research, with Porkbun for pricing) that **never reports uncertain results as "taken"**.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-compatible-purple.svg)](https://modelcontextprotocol.io)
@@ -38,9 +38,9 @@ Powered by [digmyname.com](https://digmyname.com) — a multi-source verificatio
 ## What you get
 
 - ✅ **Domain availability** across 50+ TLDs (`.com`, `.io`, `.ai`, `.app`, `.dev`, `.co`, `.xyz`, `.me`, `.so`, …)
-- ✅ **Cheapest registrar** per TLD — 7 registrars compared (Cloudflare, Porkbun, Namecheap, Spaceship, OVHcloud, GoDaddy, Google Domains)
+- ✅ **Cheapest registrar** per TLD — 6 registrars compared (Cloudflare, Porkbun, Namecheap, Spaceship, OVHcloud, GoDaddy)
 - ✅ **Premium / for-sale detection** (GoDaddy aftermarket + parked-domain heuristics)
-- ✅ **Multi-source verification** — Domainr + RDAP (IANA bootstrap) + DNS + Porkbun. Uncertain ≠ taken.
+- ✅ **Multi-source verification** — RDAP (IANA bootstrap) + DNS-over-HTTPS (hedged) + Fastly Domain Research. Porkbun used for pricing only. Uncertain ≠ taken.
 - ✅ **No API key required** — free public endpoint
 - ✅ **Works in Claude Desktop, Cursor, Windsurf, ChatGPT, n8n, Zed**, and any MCP-compatible client
 
@@ -181,7 +181,7 @@ Once installed, try these in Claude / Cursor / Windsurf:
   "domain": "mybakery.com",
   "available": true,
   "confidence": "high",
-  "sources": ["domainr", "rdap", "dns"],
+  "sources": ["rdap", "dns", "fastly"],
   "premium": false,
   "cheapest": {
     "registrar": "Cloudflare",
